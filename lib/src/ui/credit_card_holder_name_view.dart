@@ -15,11 +15,11 @@ class CreditCardHolderNameView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 172,
+      width: 220,
       child: CreditCardText(
         cardHolderFullName.toUpperCase(),
         letterSpacing: 2,
-        fontSize: 12,
+        fontSize: 14,
       ),
     );
   }

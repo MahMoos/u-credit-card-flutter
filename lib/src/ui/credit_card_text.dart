@@ -8,7 +8,7 @@ class CreditCardText extends StatelessWidget {
     this.text, {
     super.key,
     this.letterSpacing = 3.2,
-    this.fontSize = 16,
+    this.fontSize = 19,
     this.fontWeight = FontWeight.w700,
   });
 

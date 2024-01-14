@@ -19,34 +19,30 @@ class CreditCardChipNfcView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 264,
-      child: Row(
-        children: [
-          ...[
-            const SizedBox(width: 12),
-            const SizedBox(
-              height: 26,
-              child: CreditCardAssetImage(
-                assetPath: Assets.chip,
-              ),
-            ),
-          ],
-          if (placeNfcIconAtTheEnd) const Spacer(),
-          if (!doesSupportNfc)
-            const SizedBox.shrink()
-          else ...[
-            const SizedBox(width: 12),
-            const SizedBox(
-              height: 18,
-              width: 25,
-              child: CreditCardAssetImage(
-                assetPath: Assets.nfc,
-              ),
-            ),
-          ],
+    return Row(
+      children: [
+        ...[
+          const SizedBox(width: 37),
+          const CreditCardAssetImage(
+            assetPath: Assets.chip,
+            fit: BoxFit.fill,
+            height: 32.68,
+            width: 44.88,
+          ),
         ],
-      ),
+        if (placeNfcIconAtTheEnd) const Spacer(),
+        if (doesSupportNfc) ...[
+          const SizedBox(width: 12),
+          const SizedBox(
+            height: 18,
+            width: 25,
+            child: CreditCardAssetImage(
+              assetPath: Assets.nfc,
+            ),
+          ),
+          const SizedBox(width: 37),
+        ],
+      ],
     );
   }
 }

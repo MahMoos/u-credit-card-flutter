@@ -46,7 +46,7 @@ class CreditCardValidityView extends StatelessWidget {
                   'VALID FROM',
                   style: TextStyle(
                     color: Color.fromARGB(255, 200, 200, 200),
-                    fontSize: 5,
+                    fontSize: 6,
                     height: 1.2,
                   ),
                   textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class CreditCardValidityView extends StatelessWidget {
                 CreditCardText(
                   validFromMasked!,
                   letterSpacing: 2,
-                  fontSize: 9,
+                  fontSize: 10,
                 ),
             ],
           ),
@@ -74,7 +74,7 @@ class CreditCardValidityView extends StatelessWidget {
                   'VALID THRU',
                   style: TextStyle(
                     color: Color.fromARGB(255, 200, 200, 200),
-                    fontSize: 5,
+                    fontSize: 6,
                     height: 1.2,
                   ),
                   textAlign: TextAlign.center,
@@ -83,7 +83,7 @@ class CreditCardValidityView extends StatelessWidget {
               CreditCardText(
                 validThruMasked,
                 letterSpacing: 2,
-                fontSize: 9,
+                fontSize: 10,
               ),
             ],
           ),

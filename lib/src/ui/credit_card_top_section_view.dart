@@ -47,7 +47,7 @@ class CreditCardTopLogo extends StatelessWidget {
           getCardTitle(cardType),
           style: const TextStyle(
             color: Colors.white70,
-            fontSize: 8,
+            fontSize: 10,
             letterSpacing: 1.5,
           ),
         ),
