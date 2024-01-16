@@ -9,7 +9,11 @@ class CreditCardChipNfcView extends StatelessWidget {
     super.key,
     required this.doesSupportNfc,
     required this.placeNfcIconAtTheEnd,
+    this.chip = Assets.chip,
   });
+
+  ///
+  final String chip;
 
   ///
   final bool doesSupportNfc;
@@ -23,10 +27,9 @@ class CreditCardChipNfcView extends StatelessWidget {
       children: [
         ...[
           const SizedBox(width: 37),
-          const CreditCardAssetImage(
-            assetPath: Assets.chip,
+          CreditCardAssetImage(
+            assetPath: chip,
             fit: BoxFit.fill,
-            height: 32.68,
             width: 44.88,
           ),
         ],

@@ -22,6 +22,9 @@ class Assets {
   /// Chip image
   static const chip = '$imagePath/chip.png';
 
+  /// Alternative chip image
+  static const chipAlt = '$imagePath/chip_alt.png';
+
   /// NFC Icon
   static const nfc = '$imagePath/nfc.png';
 }

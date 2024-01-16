@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:u_credit_card/src/constants/assets.dart';
 import 'package:u_credit_card/src/constants/ui_constants.dart';
 import 'package:u_credit_card/src/ui/credit_card_chip_nfc_view.dart';
 import 'package:u_credit_card/src/ui/credit_card_holder_name_view.dart';
@@ -56,6 +57,15 @@ enum CardProviderLogoPosition {
   bool get isLeft => this == CardProviderLogoPosition.left;
 }
 
+/// Chip type to display
+enum ChipType {
+  /// Golden chip
+  primary,
+
+  /// Silver chip
+  alt;
+}
+
 /// Creates Credit Card UI.
 class CreditCardUi extends StatelessWidget {
   /// Creates Credit Card UI.
@@ -77,6 +87,7 @@ class CreditCardUi extends StatelessWidget {
     this.backgroundDecorationImage,
     this.showValidFrom = true,
     this.showValidThru = true,
+    this.chipType = ChipType.primary,
   });
 
   /// Full Name of the Card Holder.
@@ -166,6 +177,10 @@ class CreditCardUi extends StatelessWidget {
   /// Set Background image, can support both asset and network image.
   final DecorationImage? backgroundDecorationImage;
 
+  /// Chip type to be displayed
+  /// by default, it is a golden chip
+  final ChipType chipType;
+
   @override
   Widget build(BuildContext context) {
     final cardNumberMasked = CreditCardHelper.maskCreditCardNumber(
@@ -248,6 +263,9 @@ class CreditCardUi extends StatelessWidget {
                 child: CreditCardChipNfcView(
                   doesSupportNfc: doesSupportNfc,
                   placeNfcIconAtTheEnd: placeNfcIconAtTheEnd,
+                  chip: chipType == ChipType.primary
+                      ? Assets.chip
+                      : Assets.chipAlt,
                 ),
               ),
               Positioned(
