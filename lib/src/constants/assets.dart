@@ -7,7 +7,7 @@ class Assets {
 
   // Visa types logo
   /// Logo for Visa
-  static const visaLogo = '$imagePath/visa_logo.png';
+  static const visaLogo = '$imagePath/visa.png';
 
   /// Logo for Master card
   static const masterCardLogo = '$imagePath/master_card.png';
