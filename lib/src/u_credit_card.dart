@@ -223,99 +223,102 @@ class CreditCardUi extends StatelessWidget {
       );
     }
 
-    return Transform.scale(
-      scale: scale,
-      child: FittedBox(
-        child: SizedBox(
-          width: 337,
-          child: AspectRatio(
-            aspectRatio: 1.586,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.5),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    topLeftColor,
-                    conditionalBottomRightColor,
-                  ],
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Transform.scale(
+        scale: scale,
+        child: FittedBox(
+          child: SizedBox(
+            width: 337,
+            child: AspectRatio(
+              aspectRatio: 1.586,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.5),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      topLeftColor,
+                      conditionalBottomRightColor,
+                    ],
+                  ),
+                  image: backgroundDecorationImage,
                 ),
-                image: backgroundDecorationImage,
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    left: 11.811,
-                    right: 11.811,
-                    top: 11.811,
-                    child: SizedBox(
-                      height: 43.3071,
-                      child: CreditCardTopLogo(
-                        cardType: cardType,
-                        cardProviderLogo: cardProviderLogo,
-                        cardProviderLogoPosition: cardProviderLogoPosition,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 72,
-                    left: 0,
-                    right: 0,
-                    child: CreditCardChipNfcView(
-                      doesSupportNfc: doesSupportNfc,
-                      placeNfcIconAtTheEnd: placeNfcIconAtTheEnd,
-                      chip: chipType == ChipType.primary
-                          ? Assets.chip
-                          : Assets.chipAlt,
-                    ),
-                  ),
-                  Positioned(
-                    right: 11.811,
-                    bottom: 11.811,
-                    child: SizedBox(
-                      height: 43.3071,
-                      child: AnimatedSwitcher(
-                        duration: UiConstants.animationDuration,
-                        child: Container(
-                          key: ValueKey(cardNumberMasked),
-                          child: cardLogoWidget,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 11.811,
+                      right: 11.811,
+                      top: 11.811,
+                      child: SizedBox(
+                        height: 43.3071,
+                        child: CreditCardTopLogo(
+                          cardType: cardType,
+                          cardProviderLogo: cardProviderLogo,
+                          cardProviderLogoPosition: cardProviderLogoPosition,
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 118,
-                    left: 26,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CreditCardText(
-                          cardNumberMasked.length > 20
-                              ? cardNumberMasked.substring(0, 20)
-                              : cardNumberMasked,
+                    Positioned(
+                      top: 72,
+                      left: 0,
+                      right: 0,
+                      child: CreditCardChipNfcView(
+                        doesSupportNfc: doesSupportNfc,
+                        placeNfcIconAtTheEnd: placeNfcIconAtTheEnd,
+                        chip: chipType == ChipType.primary
+                            ? Assets.chip
+                            : Assets.chipAlt,
+                      ),
+                    ),
+                    Positioned(
+                      right: 11.811,
+                      bottom: 11.811,
+                      child: SizedBox(
+                        height: 43.3071,
+                        child: AnimatedSwitcher(
+                          duration: UiConstants.animationDuration,
+                          child: Container(
+                            key: ValueKey(cardNumberMasked),
+                            child: cardLogoWidget,
+                          ),
                         ),
-                        if (showValidFrom || showValidThru) ...[
+                      ),
+                    ),
+                    Positioned(
+                      top: 118,
+                      left: 26,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CreditCardText(
+                            cardNumberMasked.length > 20
+                                ? cardNumberMasked.substring(0, 20)
+                                : cardNumberMasked,
+                          ),
+                          if (showValidFrom || showValidThru) ...[
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            CreditCardValidityView(
+                              validFromMasked: validFromMasked,
+                              validThruMasked: validThruMasked,
+                              showValidFrom: showValidFrom,
+                              showValidThru: showValidThru,
+                            ),
+                          ],
                           const SizedBox(
                             height: 8,
                           ),
-                          CreditCardValidityView(
-                            validFromMasked: validFromMasked,
-                            validThruMasked: validThruMasked,
-                            showValidFrom: showValidFrom,
-                            showValidThru: showValidThru,
+                          CreditCardHolderNameView(
+                            cardHolderFullName: cardHolderFullName,
                           ),
                         ],
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        CreditCardHolderNameView(
-                          cardHolderFullName: cardHolderFullName,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
